@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - [Tuo Nome]</title>
+  <title>Portfolio - Simone Battiato</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f7f7f7; color: #333; }
     header { background: #1e1e1e; color: white; padding: 2rem 1rem; text-align: center; }
@@ -14,55 +14,162 @@
     footer { background: #1e1e1e; color: white; text-align: center; padding: 1rem; }
     a { color: #007acc; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; margin-bottom: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f0f0f0; }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>[Tuo Nome]</h1>
-    <p>Studente Magistrale in Informatica | Full Stack | Machine Learning | Cloud (AWS)</p>
+    <h1>Simone Battiato</h1>
+    <p>Master's Student in Computer Science | Full Stack Developer | Machine Learning | Cloud (AWS)</p>
   </header>
 
   <section>
-    <h2>Chi sono</h2>
-    <p>Sono uno studente laureato in Informatica triennale e attualmente frequento la magistrale. Lavoro su progetti di sviluppo web sia frontend che backend, e ho esperienza anche in Machine Learning e cloud computing con AWS.</p>
+    <h2>About Me</h2>
+    <p>I graduated with a Bachelor's degree in Computer Science and am currently pursuing my Master's degree. I work on both frontend and backend web development projects and have experience in Machine Learning and cloud computing with AWS.</p>
   </section>
 
   <section>
-    <h2>Progetti</h2>
+    <h2>Projects</h2>
 
     <div class="project">
-      <h3>App di Classificazione con ML</h3>
-      <p>Modello di classificazione addestrato su dataset XYZ usando scikit-learn e visualizzato con Streamlit.</p>
-      <p><strong>Tecnologie:</strong> Python, scikit-learn, Streamlit</p>
-      <p><a href="#">[Link GitHub]</a> | <a href="#">[Demo Live]</a></p>
+      <h3>Handwriting Classification Framework</h3>
+      <p>This thesis project presents a comprehensive machine learning framework for forensic handwriting analysis to identify authors through character-level analysis. The system combines deep learning techniques with custom preprocessing pipelines to achieve high accuracy in distinguishing handwriting styles of different individuals.</p>
+      
+      <h4>Dataset Creation & Preprocessing</h4>
+      <ul>
+        <li><strong>CVL Database Integration:</strong> Utilized the CVL public database with 310 writers across 7 different texts (German and English)</li>
+        <li><strong>Custom Character Extraction:</strong> Developed GUI-based tool for extracting individual characters from word images</li>
+        <li><strong>Advanced Preprocessing Pipeline:</strong> Grayscale conversion, adaptive thresholding, noise reduction with cv2.fastNlMeansDenoising, and morphological operations</li>
+        <li><strong>Contour Detection:</strong> Automated character segmentation with bounding box calculation and manual correction capabilities</li>
+        <li><strong>26-Class Dataset:</strong> Organized extracted characters into alphabetical classes (a-z) for classification training</li>
+      </ul>
+
+      <h4>CNN Architecture & Fine-tuning</h4>
+      <ul>
+        <li><strong>Transfer Learning:</strong> Fine-tuned ResNet-18, AlexNet, and SqueezeNet models pre-trained on ImageNet</li>
+        <li><strong>Data Augmentation:</strong> Brightness adjustment, random rotation, and resizing transformations</li>
+        <li><strong>SGD Optimization:</strong> Systematic hyperparameter tuning with learning rate, momentum, and weight decay optimization</li>
+        <li><strong>Regularization:</strong> CrossEntropyLoss function with early stopping mechanism to prevent overfitting</li>
+      </ul>
+
+      <h4>Siamese Network Implementation</h4>
+      <ul>
+        <li><strong>Twin Architecture:</strong> Identical CNN subnetworks with shared weights for similarity comparison</li>
+        <li><strong>Contrastive Loss:</strong> Custom loss function L(y,D) = (1-y)½D² + y½max(0,m-D)² for distance learning</li>
+        <li><strong>Embedding Network:</strong> ResNet18-based feature extraction producing 128-dimensional embeddings</li>
+        <li><strong>Pair Generation:</strong> Automated creation of similar/dissimilar character pairs for training</li>
+        <li><strong>Distance Calculation:</strong> Multi-level averaging system for comprehensive writer comparison</li>
+      </ul>
+
+      <h4>Experimental Results</h4>
+      <table>
+        <tr><th>Model</th><th>Precision</th><th>Recall</th><th>F1 Score</th><th>Parameters</th></tr>
+        <tr><td>AlexNet</td><td>0.901</td><td>0.915</td><td>0.906</td><td>57M</td></tr>
+        <tr><td>ResNet-18</td><td>0.864</td><td>0.832</td><td>0.843</td><td>11M</td></tr>
+        <tr><td>SqueezeNet</td><td>0.826</td><td>0.766</td><td>0.785</td><td>0.7M</td></tr>
+      </table>
+
+      <h4>Siamese Network Performance</h4>
+      <ul>
+        <li><strong>Training Convergence:</strong> Final training loss of 0.0092 with stable convergence after 6000-8000 steps</li>
+        <li><strong>Validation Performance:</strong> 0.1011 validation loss with dropout regularization improvements</li>
+        <li><strong>Writer Discrimination:</strong> Successfully distinguishes between different writers with distance values ranging 0.95-1.50</li>
+        <li><strong>Multi-subject Validation:</strong> Tested on 10 subjects with distance matrix visualization confirming writer separation</li>
+      </ul>
+
+      <h4>Technical Innovation</h4>
+      <p>The framework introduces a novel approach to forensic handwriting analysis by combining character-level CNN classification with Siamese network-based writer verification. The system performs "1-to-n" comparisons for each letter, averaging distances across all characters to produce a comprehensive writer similarity score.</p>
+      
+      <p><strong>Technologies:</strong> Python, PyTorch, PyTorch Lightning, OpenCV, PIL, scikit-learn, cv2, CUDA, TensorFlow</p>
+      <p><a href="https://github.com/simone002/LetterClassifier" target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
     </div>
 
     <div class="project">
-      <h3>Web App Full Stack</h3>
-      <p>Applicazione web per gestione utenti con login, dashboard e API RESTful.</p>
-      <p><strong>Tecnologie:</strong> Node.js, Express, MongoDB, HTML/CSS</p>
-      <p><a href="#">[Link GitHub]</a> | <a href="#">[Demo Live]</a></p>
+      <h3>Automatic Pollen Classification System</h3>
+      <p>This project develops an automatic classification system for images of airborne particles acquired via microscope, focusing on distinguishing between different types of pollen and debris particles. The system addresses challenges such as high visual similarity between classes and image variability using Deep Learning architectures, specifically Convolutional Neural Networks (CNNs).</p>
+      
+      <h4>Dataset & Classes</h4>
+      <p>The dataset includes 4 classes: Corylus avellana (normal and anomalous hazelnut pollen), Alnus (alder pollen), and Debris (non-pollen particles). Each sample includes original images, binary masks, and detailed segmentations.</p>
+      
+      <h4>Key Features</h4>
+      <ul>
+        <li><strong>Advanced Preprocessing:</strong> Mask application to isolate particles and remove background noise</li>
+        <li><strong>Multiple CNN Architectures:</strong> Comparison of ResNet-34, VGG, and AlexNet models</li>
+        <li><strong>Data Augmentation:</strong> Random rotations, horizontal flips, and color jittering</li>
+        <li><strong>Class Imbalance Handling:</strong> Weighted random sampling strategy</li>
+        <li><strong>High Performance:</strong> All models achieved >96% accuracy on test set</li>
+      </ul>
+
+      <h4>Results</h4>
+      <table>
+        <tr><th>Model</th><th>Accuracy</th><th>Macro Avg F1</th><th>Parameters</th></tr>
+        <tr><td>ResNet-34</td><td>98.49%</td><td>0.98</td><td>21M</td></tr>
+        <tr><td>VGG</td><td>97.25%</td><td>0.97</td><td>138M</td></tr>
+        <tr><td>AlexNet</td><td>96.46%</td><td>0.96</td><td>61M</td></tr>
+      </table>
+
+      <p><strong>Technologies:</strong> Python, PyTorch, Torchvision, Scikit-learn, TensorBoard, Matplotlib, Seaborn</p>
+      <p><a href="#" target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
     </div>
 
+
     <div class="project">
-      <h3>Deploy su AWS</h3>
-      <p>Deploy di una web app su EC2, gestione storage con S3 e configurazione con Route53.</p>
-      <p><strong>Tecnologie:</strong> AWS EC2, S3, Route53, Docker</p>
-      <p><a href="#">[Link GitHub]</a></p>
+      <h3>Workflow: Cloud-Native Todo List on AWS</h3>
+      <p>A full-stack web application for task management, fully deployed on AWS with modern architecture and DevOps automation.</p>
+
+      <h4>Main Features</h4>
+      <ul>
+        <li><strong>Secure Authentication:</strong> Managed with AWS Cognito using JWT tokens.</li>
+        <li><strong>Task Management (CRUD):</strong> Create, view, update, and delete tasks with authorization.</li>
+        <li><strong>Protected APIs:</strong> Endpoints require valid tokens for access.</li>
+        <li><strong>Event-Driven Notifications:</strong> SNS and SQS for asynchronous, decoupled messaging.</li>
+      </ul>
+
+      <h4>Cloud Architecture</h4>
+      <ul>
+        <li><strong>Frontend:</strong> React app hosted as a static website on Amazon S3.</li>
+        <li><strong>Backend:</strong> Node.js REST API containerized and running on AWS ECS Fargate, images stored in ECR.</li>
+        <li><strong>Database:</strong> MySQL hosted on Amazon RDS.</li>
+        <li><strong>Authentication:</strong> AWS Cognito.</li>
+        <li><strong>Logging:</strong> CloudWatch Logs.</li>
+        <li><strong>Permissions:</strong> IAM role with least privilege assigned to ECS tasks.</li>
+      </ul>
+
+      <h4>Technology Stack</h4>
+      <table>
+        <tr><th>Category</th><th>Technologies</th></tr>
+        <tr><td>Frontend</td><td>React.js, Material-UI, Axios, React Router</td></tr>
+        <tr><td>Backend</td><td>Node.js, Express.js, JWT, Bcrypt, MySQL2</td></tr>
+        <tr><td>Database</td><td>MySQL 8.0</td></tr>
+        <tr><td>Cloud & DevOps</td><td>AWS (ECS, Fargate, RDS, S3, ECR, Cognito, SNS, SQS, IAM), Docker, GitHub Actions</td></tr>
+      </table>
+
+      <h4>Deployment & Management</h4>
+      <ul>
+        <li><code>deploy.sh</code>: Script to create or update AWS infrastructure.</li>
+        <li><code>undeploy.sh</code>: Script to stop services to save costs.</li>
+        <li><code>undeploy-total.sh</code>: Script to completely delete all resources.</li>
+      </ul>
+
+      <h4>CI/CD</h4>
+      <p>GitHub Actions workflow automates Docker image build, push to ECR, and deployment on ECS and S3 on every push to <code>main</code>.</p>
+      <p><a href="https://github.com/simone002/Workflow" target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
     </div>
 
   </section>
 
   <section>
-    <h2>Contatti</h2>
-    <p>Email: <a href="mailto:tuaemail@example.com">tuaemail@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/tuonome" target="_blank">github.com/tuonome</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/tuonome" target="_blank">linkedin.com/in/tuonome</a></p>
+    <h2>Contact</h2>
+    <p>Email: simonebattiato002@gmail.com</p>
+    <p>GitHub: <a href="https://github.com/simone002" target="_blank" rel="noopener noreferrer">github.com/simone002</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/simone-battiato-17155a235" target="_blank" rel="noopener noreferrer">linkedin.com/in/simone-battiato-17155a235</a></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 [Tuo Nome] - Portfolio Personale</p>
+    <p>&copy; Simone Battiato - Personal Portfolio</p>
   </footer>
 
 </body>
